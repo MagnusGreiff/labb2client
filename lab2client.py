@@ -8,7 +8,7 @@ serverPort = 12000
 # create UDP socket
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-amountSend = 20
+amountSend = 50
 amountSeconds = 10
 for i in range(0, amountSeconds):
     for x in range(0, amountSend):
