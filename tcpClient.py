@@ -2,7 +2,7 @@ import socket
 import time
 import sys
 #serverName = 'hostname'
-serverName = '193.11.186.159'
+serverName = '193.11.184.120'
 
 serverPort = 12000
 

@@ -1,7 +1,7 @@
 import socket
 import time
 #serverName = 'hostname'
-serverName = '193.11.186.159'
+serverName = '193.11.184.120'
 
 serverPort = 12000
 
@@ -14,12 +14,13 @@ try:
     for x in range(0, amountSend):
         message = str(amountSend) + ":" + str(10000 + x) + ";" + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         clientSocket.sendto(message.encode(), (serverName, serverPort))
-        modifiedMessage, serverAddress = clientSocket.recvfrom(506)
+        modifiedMessage, serverAddress = clientSocket.recvfrom(1000)
+        print("Sending")
         print("Received from server: ", modifiedMessage.decode())
         time.sleep(amountSeconds)
 except KeyboardInterrupt:
-        message = "closed"
-        clientSocket.sendto(message.encode(), (serverName, serverPort))
-        clientSocket.close()
+    message = "closed"
+    clientSocket.sendto(message.encode(), (serverName, serverPort))
+    clientSocket.close()
 
 clientSocket.close()

@@ -12,7 +12,7 @@ count = 0
 start = 0
 
 while True:
-    message, clientAddress = serverSocket.recvfrom(506)
+    message, clientAddress = serverSocket.recvfrom(1000)
     if count < 1:
         num = re.findall(':(\d+)', str(message))
         count = int(num[0])
