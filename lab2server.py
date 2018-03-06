@@ -29,12 +29,12 @@ while True:
         if count != int(num[0]):
             print("oh no, you lost the package: " + str(int(num[0])))
             lostPackages.append(int(num[0]))
-            pass
-        count += 1
-        modifiedMessage = message.decode()
-        serverSocket.sendto(modifiedMessage.encode(), clientAddress)
-        if count == (start + int(amountSend[0])):
-            count = 0
+        else:
+            count += 1
+            modifiedMessage = message.decode()
+            serverSocket.sendto(modifiedMessage.encode(), clientAddress)
+            if count == (start + int(amountSend[0])):
+                count = 0
     except IndexError:
         print("Restarting")
     finally:
