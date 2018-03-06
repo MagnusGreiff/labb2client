@@ -41,4 +41,4 @@ while True:
     except IndexError:
         print("Restarting")
     finally:
-        print(count, expectedPackage)
+        print(count, expectedPackage, int(num[0]))
