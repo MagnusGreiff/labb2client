@@ -38,11 +38,11 @@ while True:
 
         if int(amountExpected) == int(count):
             print('all packages recieved OK')
-            print(expectedPackage)
+            # print(expectedPackage)
             # for x in range(int(expectedPackage[0]), int(expectedPackage[-1]) + 1):
             #     print(x)
             original_list = [x for x in range(int(expectedPackage[0]), int(expectedPackage[-1]) + 1)]
-            print(original_list)
+            # print(original_list)
             num_list = set(expectedPackage)
             print(list(num_list ^ set(original_list)))
 
