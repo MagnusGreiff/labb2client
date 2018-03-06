@@ -36,6 +36,7 @@ while True:
         elif int(expectedPackage[int((len(expectedPackage)) - 2)]) != (int(expectedPackage[-1]) - 1):
             print('skipped a package')
 
+        print(count)
         if int(amountExpected) == int(count):
             print('all packages recieved OK')
             # print(expectedPackage)
