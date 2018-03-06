@@ -32,6 +32,8 @@ while True:
             print("oh no, you lost the package: " + str(int(num[0])))
             lostPackages.append(int(num[0]))
             expectedPackage += 1
+            if count == int(amountSend[0]):
+                count = 0
         else:
             count += 1
             expectedPackage += 1
