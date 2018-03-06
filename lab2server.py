@@ -29,6 +29,7 @@ while True:
         if count != int(num[0]):
             print("oh no, you lost the package: " + str(int(num[0])))
             lostPackages.append(int(num[0]))
+            count -= 1
         else:
             count += 1
             modifiedMessage = message.decode()
