@@ -28,16 +28,19 @@ while True:
     try:
         num = re.findall(':(\d+)', str(message))
         amountSend = re.findall('(\d+):', str(message))
-        if expectedPackage != int(num[0]):
-            print("oh no, you lost the package: " + str(int(num[0])))
-            lostPackages.append(int(num[0]))
-            expectedPackage += 1
-            count += 1
-        else:
+
+
+        if expectedPackage == int(num[0]):
             count += 1
             expectedPackage += 1
             if count == int(amountSend[0]):
                 count = 0
+        elif expectedPackage != int(num[0]):
+            print("oh no, you lost the package: " + str(int(num[0])))
+            lostPackages.append(int(num[0]))
+            expectedPackage += 1
+            count += 1
+
     except IndexError:
         print("Restarting")
     finally:

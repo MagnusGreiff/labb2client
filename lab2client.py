@@ -1,7 +1,8 @@
 import socket
 import time
 #serverName = 'hostname'
-serverName = '193.11.185.167'
+# serverName = '193.11.185.167'
+serverName = '127.0.0.1'
 
 serverPort = 12000
 
