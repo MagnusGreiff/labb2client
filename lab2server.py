@@ -20,7 +20,9 @@ while True:
         amountSend = re.findall('(\d+):', str(message))
         count += 1
 
-        package = num[0]
+        amountExpected = int(amountSend[0]) - 1
+
+        package = int(num[0])
 
         expectedPackage.append(package)
 
@@ -33,6 +35,16 @@ while True:
             # check number order
         elif int(expectedPackage[int((len(expectedPackage)) - 2)]) != (int(expectedPackage[-1]) - 1):
             print('skipped a package')
+
+        if int(amountExpected) == int(count):
+            print('all packages recieved OK')
+            print(expectedPackage)
+            # for x in range(int(expectedPackage[0]), int(expectedPackage[-1]) + 1):
+            #     print(x)
+            original_list = [x for x in range(int(expectedPackage[0]), int(expectedPackage[-1]) + 1)]
+            print(original_list)
+            num_list = set(expectedPackage)
+            print(list(num_list ^ set(original_list)))
 
     # if count < 1:
     #     lostPackages = []
@@ -60,5 +72,7 @@ while True:
 
     except IndexError:
         print("Restarting")
-    finally:
-        print(count, expectedPackage, int(num[0]))
+    # finally:
+    #     print(count, expectedPackage, int(num[0]))
+    #
+serverSocket.close()
