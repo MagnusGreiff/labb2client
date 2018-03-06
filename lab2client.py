@@ -7,6 +7,7 @@ serverPort = 12000
 
 # create UDP socket
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+clientSocket.setblocking(0)
 
 amountSend = 200
 amountSeconds = 1 / 20
@@ -16,9 +17,7 @@ try:
         print(x)
         message = str(amountSend) + ":" + str(10000 + x) + ";" + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         clientSocket.sendto(message.encode(), (serverName, serverPort))
-        modifiedMessage, serverAddress = clientSocket.recvfrom(1000)
         print("Sending")
-        # print("Received from server: ", modifiedMessage.decode())
         time.sleep(amountSeconds)
 except KeyboardInterrupt:
     message = "closed"

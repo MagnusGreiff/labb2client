@@ -18,6 +18,7 @@ while True:
     # print(message, clientAddress)
     print("Inside server")
     if count < 1:
+        lostPackages = []
         num = re.findall(':(\d+)', str(message))
         start = int(num[0])
         expectedPackage = int(num[0])
@@ -34,8 +35,6 @@ while True:
         else:
             count += 1
             expectedPackage += 1
-            modifiedMessage = message.decode()
-            serverSocket.sendto(modifiedMessage.encode(), clientAddress)
             if count == int(amountSend[0]):
                 count = 0
     except IndexError:
