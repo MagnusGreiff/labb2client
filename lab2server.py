@@ -11,34 +11,14 @@ expectedPackage = []
 count = int (len(expectedPackage) -1)
 lostPackages = []
 
+
 while True:
     try:
         message, clientAddress = serverSocket.recvfrom(1000)
-        # print(message, clientAddress)
-        print("Inside server")
-        num = re.findall(':(\d+)', str(message))
-        amountSend = re.findall('(\d+):', str(message))
-        count += 1
-
-        amountExpected = int(amountSend[0]) - 1
-
-        package = int(num[0])
-
-        expectedPackage.append(package)
 
 
-        if expectedPackage[-1] == count:
-            print(package)
-        elif int(expectedPackage[int((len(expectedPackage)) - 2)]) == (int(expectedPackage[-1]) - 1):
-        # elif amountRecieved <= packageNum:
-            print(package)
-            # check number order
-        elif int(expectedPackage[int((len(expectedPackage)) - 2)]) != (int(expectedPackage[-1]) - 1):
-            print('skipped a package')
-
-        print(count)
-        if int(amountExpected) == int(count):
-            print('all packages recieved OK')
+        if message.decode() == "done":
+            # print('all packages recieved OK')
             # print(expectedPackage)
             # for x in range(int(expectedPackage[0]), int(expectedPackage[-1]) + 1):
             #     print(x)
@@ -46,6 +26,39 @@ while True:
             # print(original_list)
             num_list = set(expectedPackage)
             print(list(num_list ^ set(original_list)))
+        else:
+            # print(message, clientAddress)
+            print("Inside server")
+            num = re.findall(':(\d+)', str(message))
+            amountSend = re.findall('(\d+):', str(message))
+            count += 1
+
+            amountExpected = int(amountSend[0]) - 1
+
+            package = int(num[0])
+
+            expectedPackage.append(package)
+
+
+            if expectedPackage[-1] == count:
+                print(package)
+            elif int(expectedPackage[int((len(expectedPackage)) - 2)]) == (int(expectedPackage[-1]) - 1):
+            # elif amountRecieved <= packageNum:
+                print(package)
+                # check number order
+            elif int(expectedPackage[int((len(expectedPackage)) - 2)]) != (int(expectedPackage[-1]) - 1):
+                print('skipped a package')
+
+        # print(count)
+        # if int(amountExpected) == int(count):
+        #     print('all packages recieved OK')
+        #     # print(expectedPackage)
+        #     # for x in range(int(expectedPackage[0]), int(expectedPackage[-1]) + 1):
+        #     #     print(x)
+        #     original_list = [x for x in range(int(expectedPackage[0]), int(expectedPackage[-1]) + 1)]
+        #     # print(original_list)
+        #     num_list = set(expectedPackage)
+        #     print(list(num_list ^ set(original_list)))
 
     # if count < 1:
     #     lostPackages = []
