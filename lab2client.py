@@ -10,7 +10,7 @@ serverPort = 12000
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 clientSocket.setblocking(0)
 
-amountSend = 21
+amountSend = 201
 amountSeconds = 1 / 20
 count = 0
 try:
