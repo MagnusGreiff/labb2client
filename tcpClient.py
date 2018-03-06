@@ -11,8 +11,8 @@ clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 clientSocket.connect((serverName, serverPort))
 
-amountSend = 200
-amountSeconds = 1 / 20
+amountSend = 500
+amountSeconds = 1 / 50
 count = 0
 try:
     for x in range(0, amountSend):
