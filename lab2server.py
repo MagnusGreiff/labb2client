@@ -14,6 +14,8 @@ lostPackages = []
 
 while True:
     message, clientAddress = serverSocket.recvfrom(1000)
+    print(message, clientAddress)
+    print("Inside server")
     if count < 1:
         num = re.findall(':(\d+)', str(message))
         count = int(num[0])
